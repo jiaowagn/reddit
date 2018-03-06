@@ -31,3 +31,17 @@
     <%= @link.get_downvotes.size %>
   <% end %>
 </div>
+
+<h3 id="comments_title">
+  <%= @link.comments.size %> Comments
+</h3>
+
+<div id="comments">
+  <%= render :partial => @link.comments %>
+</div>
+<%= simple_form_for [@link, Comment.new] do |f| %>
+  <div class="form-group">
+    <%= f.input :body, input_html: { class: "form-control" } %>
+  </div>
+  <%= f.submit "Add comment", class: "btn btn-primary" %>
+<% end %>
